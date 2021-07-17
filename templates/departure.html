@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block container %}
+    <main class="container mt-3">
+        <h1 class="display-5 mt-4">Летим {{ departure }}</h1>
+        <p class="mb-4">Найдено {{ data|count }} туров, от {{ (data.values()|min(attribute = "price")).price }}
+            до {{ (data.values()|max(attribute = "price")).price }} и
+            от {{ (data.values()|min(attribute = "nights")).nights }} ночей
+            до {{ (data.values()|max(attribute = "nights")).nights }} ночей</p>
+        <!-- CARDS -->
+        <div class="row mt-5">
+            {% for id, tour_dict in data.items() %}
+                <div class="col-4">
+                    <div class="card mb-4">
+                        <img src="{{ tour_dict.picture }}" class="card-img-top img-fluid" alt="" width="300"
+                             height="200">
+                        <div class="card-body">
+                            <h2 class="h5 card-title">{{ tour_dict.title }}</h2>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                            <a href="/tours/{{ id }}" class="btn btn-sm btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
