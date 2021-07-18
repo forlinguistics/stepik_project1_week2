@@ -1,2 +1,2 @@
-# stepik flask project
-+bonus task
+# stepik flask week1 project
+week 2 updates
